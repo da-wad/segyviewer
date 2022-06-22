@@ -77,3 +77,20 @@ python setup.py install
 Please note that the required library PyQt5 is not listed in requirements.txt. QT not longer
 supports PyQt5 and as such it is not possible to pip install PyQt5.
 Setup.py, which uses pip, would fail if PyQt5 was listed in requirements.txt.
+
+## Installation on Omnia VM
+
+```bash
+$ git clone git@github.com:MathiasAlerini/segyviewer.git
+$ git switch pyqt5
+$ conda install sip
+$ pip install pyqt5
+$ pip install PyQtWebEngine
+$ python setup.py build
+$ python setup.py install
+```
+
+and run with 
+```
+$ applications/segyviewer <filename>
+```
