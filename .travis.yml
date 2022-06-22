@@ -3,7 +3,7 @@ language: python
 dist: trusty
 
 env:
-  - PYTHON=2.7
+  - PYTHON=3.9
 
 os:
   - linux
@@ -12,9 +12,9 @@ os:
 addons:
   apt:
     packages:
-      - libqt4-core
-      - libqt4-gui
-      - python-qt4
+      - libqt5-core
+      - libqt5-gui
+      - python-qt5
 
 matrix:
   fast_finish: true
@@ -23,7 +23,7 @@ matrix:
   include:
     - os: osx
       language: generic
-      python: "2.7"
+      python: "3.9"
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
@@ -35,13 +35,13 @@ install:
       conda config --set always_yes yes --set changeps1 no;
       conda update -q conda;
       conda info -a;
-      conda install pyqt=4;
+      conda install pyqt=5;
     fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-        ln -s /usr/lib/python$TRAVIS_PYTHON_VERSION/dist-packages/PyQt4
-              $VIRTUAL_ENV/lib/python2.7/site-packages;
+        ln -s /usr/lib/python$TRAVIS_PYTHON_VERSION/dist-packages/PyQt5
+              $VIRTUAL_ENV/lib/python3.9/site-packages;
         ln -s /usr/lib/python$TRAVIS_PYTHON_VERSION/dist-packages/sip*
-              $VIRTUAL_ENV/lib/python2.7/site-packages;
+              $VIRTUAL_ENV/lib/python3.9/site-packages;
     fi
   - pip install --upgrade pip
   - pip install -r requirements.txt

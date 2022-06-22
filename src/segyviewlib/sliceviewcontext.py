@@ -1,5 +1,5 @@
-from PyQt4.QtCore import QObject
-from PyQt4.QtCore import pyqtSignal
+from PyQt5.QtCore import QObject
+from PyQt5.QtCore import pyqtSignal
 
 from segyviewlib import SliceModel, SliceDataSource, SliceDirection
 
@@ -74,7 +74,6 @@ class SliceViewContext(QObject):
 
         self._has_data = has_data
         self._view_limits = {}
-
         if self._has_data:
             self._assign_indexes()
 

@@ -1,7 +1,7 @@
 from __future__ import division
-from PyQt4.QtGui import QCheckBox, QWidget, QFormLayout, QComboBox, QLabel
-from PyQt4.QtGui import QPushButton, QHBoxLayout, QVBoxLayout, QTreeWidget, QTreeWidgetItem
-from PyQt4.QtCore import Qt, QObject, pyqtSignal
+from PyQt5.QtWidgets import QCheckBox, QWidget, QComboBox, QLabel, QHBoxLayout, QVBoxLayout
+from PyQt5.QtWidgets import QPushButton, QTreeWidget, QTreeWidgetItem, QFormLayout
+from PyQt5.QtCore import Qt, QObject, pyqtSignal
 
 from segyviewlib import SliceDirection, SampleScaleController, IndexController, PlotExportSettingsWidget
 
@@ -139,7 +139,7 @@ class SettingsWindow(QWidget):
         self._tree = QTreeWidget(self)
         self._tree.setHeaderHidden(True)
         self._tree.setColumnCount(2)
-        self._tree.setColumnWidth(0, 140)
+        self._tree.setColumnWidth(0, 200)
         self._tree.setColumnWidth(1, 180)
 
         self._build_tree(self._tree, tree_def, self._tree.invisibleRootItem())
@@ -160,7 +160,7 @@ class SettingsWindow(QWidget):
         vertical_layout.addLayout(button_layout, 0)
 
         self.setLayout(vertical_layout)
-        self.setMinimumSize(390, 740)
+        self.setMinimumSize(440, 740)
 
     @property
     def qtree(self):
@@ -178,7 +178,7 @@ class SettingsWindow(QWidget):
         else:
             l.addSpacing(25)
 
-        l.addStretch(0.5)
+        l.addStretch(1)
         if widget is not None:
             widget.setMinimumWidth(180)
             widget.setMaximumWidth(180)
@@ -203,8 +203,7 @@ class SettingsWindow(QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
 
     def _build_tree(self, tree_wdgt, tree_def, root):
-        parent, children = tree_def.items()[0]
-
+        parent, children = list(tree_def.items())[0]
         # empty label /parent is a special case: either inline with the previous, or skip
         if parent == "":
             if isinstance(children, QWidget):

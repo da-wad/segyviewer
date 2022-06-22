@@ -1,4 +1,4 @@
-from PyQt4.QtGui import QFileDialog, QToolButton, QToolBar, QVBoxLayout, QWidget, QWidgetAction
+from PyQt5.QtWidgets import QFileDialog, QToolButton, QToolBar, QVBoxLayout, QWidget, QWidgetAction
 
 from segyviewlib import ColormapCombo, LayoutCombo, SettingsWindow, SliceViewContext, HelpWindow
 from segyviewlib import SliceDataSource, SliceModel, SliceDirection as SD, SliceViewWidget, resource_icon
@@ -81,7 +81,7 @@ class SegyViewWidget(QWidget):
         toolbar.addAction(self._layout_combo_action)
         self._layout_combo.layout_changed.connect(self._slice_view_widget.set_plot_layout)
 
-        # self._colormap_combo = ColormapCombo(['seismic', 'spectral', 'RdGy', 'hot', 'jet', 'gray'])
+        self._colormap_combo = ColormapCombo(['seismic', 'Spectral', 'RdGy', 'hot', 'jet', 'gray'])
         self._colormap_combo = ColormapCombo(color_maps)
         self._colormap_combo.currentIndexChanged[int].connect(self._colormap_changed)
         toolbar.addWidget(self._colormap_combo)
@@ -132,7 +132,7 @@ class SegyViewWidget(QWidget):
 
     def _save_figure(self):
         formats = "Portable Network Graphic (*.png);;Adobe Acrobat (*.pdf);;Scalable Vector Graphics (*.svg)"
-        output_file = QFileDialog.getSaveFileName(self, "Save as image", "untitled.png", formats)
+        output_file, filters = QFileDialog.getSaveFileName(self, "Save as image", "untitled.png", formats)
 
         output_file = str(output_file).strip()
 
