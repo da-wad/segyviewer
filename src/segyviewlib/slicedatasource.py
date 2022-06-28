@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 
 from .slicemodel import SliceDirection
+from .seismicfile import SeismicFile, Filetype
 import numpy as np
 import segyio
 import os
@@ -95,7 +96,8 @@ class SliceDataSource(QObject):
         if filename:
             try:
                 file_size = os.stat(filename).st_size
-                source = segyio.open(filename, "r", **kwargs)
+                seismicfile = SeismicFile()
+                source = seismicfile.open(filename)
                 self._source_filename = filename
             except:
                 raise
@@ -103,7 +105,8 @@ class SliceDataSource(QObject):
                 self._close_current_file()
                 self._source = source
                 self._file_size = file_size
-                self._source.mmap()
+                if self._source.filetype == Filetype.SEGY:
+                    self._source.mmap()
                 samples = self._source.samples
         else:
             self._close_current_file()
