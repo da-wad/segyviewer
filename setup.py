@@ -9,34 +9,6 @@ requires = map(str.rstrip, open('requirements.txt').readlines())
 # setup(..segyviewer..) must be placed before setup(..segyviewlib..), if not, the version nr for
 # segyviewer will be bumped and marked as dev.
 
-setup(name='segyviewer',
-      use_scm_version=True,
-      description='Simple viewer for SEG-Y files',
-      long_description=open('README.md').read(),
-      long_description_content_type='text/markdown',
-      author='Equinor ASA',
-      author_email='fg_gpl@equinor.com',
-      url='https://github.com/equinor/segyviewer',
-      install_requires=['segyviewlib'],
-      setup_requires=['setuptools_scm'],
-      scripts=['applications/segyviewer'],
-      license='LGPL-3.0',
-      platforms='any',
-      classifiers=[
-          'Development Status :: 5 - Production/Stable',
-          'Environment :: Other Environment',
-          'Intended Audience :: Developers',
-          'Intended Audience :: Science/Research',
-          'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
-          'Natural Language :: English',
-          'Programming Language :: Python',
-          'Programming Language :: Python :: 3.9',
-          'Topic :: Scientific/Engineering',
-          'Topic :: Scientific/Engineering :: Physics',
-          'Topic :: Software Development :: Libraries',
-          'Topic :: Utilities'
-      ]
-      )
 
 setup(name='segyviewlib',
       use_scm_version={'write_to': 'src/segyviewlib/version.py'},
@@ -72,6 +44,35 @@ setup(name='segyviewlib',
                          'resources/img/table_export.png',
                          'resources/helppage.html',
                          ]},
+      license='LGPL-3.0',
+      platforms='any',
+      classifiers=[
+          'Development Status :: 5 - Production/Stable',
+          'Environment :: Other Environment',
+          'Intended Audience :: Developers',
+          'Intended Audience :: Science/Research',
+          'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
+          'Natural Language :: English',
+          'Programming Language :: Python',
+          'Programming Language :: Python :: 3.9',
+          'Topic :: Scientific/Engineering',
+          'Topic :: Scientific/Engineering :: Physics',
+          'Topic :: Software Development :: Libraries',
+          'Topic :: Utilities'
+      ]
+      )
+
+setup(name='segyviewer',
+      use_scm_version=True,
+      description='Simple viewer for SEG-Y files',
+      long_description=open('README.md').read(),
+      long_description_content_type='text/markdown',
+      author='Equinor ASA',
+      author_email='fg_gpl@equinor.com',
+      url='https://github.com/equinor/segyviewer',
+      install_requires=['segyviewlib'],
+      setup_requires=['setuptools_scm'],
+      scripts=['applications/segyviewer'],
       license='LGPL-3.0',
       platforms='any',
       classifiers=[

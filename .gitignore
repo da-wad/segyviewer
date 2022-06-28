@@ -1,3 +1,8 @@
 *.pyc
 src/segyviewlib/version.py
+src/segyviewlib.egg-info/*
 build/*
+dist/*
+.eggs/*
+.idea/*
+segyviewer.egg-info/*

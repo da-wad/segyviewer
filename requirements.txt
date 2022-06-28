@@ -1,3 +1,7 @@
-segyio >= 1.7.1
+segyio
 numpy
 matplotlib
+pyqt5
+sip
+PyQtWebEngine
+wheel
