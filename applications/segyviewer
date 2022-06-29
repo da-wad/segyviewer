@@ -40,7 +40,8 @@ class SegyViewer(QMainWindow):
         toolbar.insertSeparator(first_action)
 
     def _open_file(self):
-        input_file, filters = QFileDialog.getOpenFileName(self, "Open SEG-Y file", "", "Segy File  (*.seg *.segy *.sgy)")
+        input_file, filters = QFileDialog.getOpenFileName(self,
+                "Open seismic file", "", "SEG-Y (*.seg *.segy *.sgy);; SeismicZFP (*.sgz *.zfp);; ZGY (*.zgy);; VDS (*.vds)")
         input_file = str(input_file).strip()
 
         if input_file:
